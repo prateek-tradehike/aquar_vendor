@@ -1,0 +1,35 @@
+{
+  "name": "productposition",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "autoprefixer": "^6.7.7",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-iconfont": "^9.0.2",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^3.4.0",
+    "gulp-install": "^1.1.0",
+    "gulp-js-wrapper": "0.0.3",
+    "gulp-minify": "0.0.14",
+    "gulp-postcss": "^6.4.0",
+    "gulp-stylus": "^2.7.0",
+    "optipng": "^1.1.0",
+    "precss": "^1.4.0",
+    "svg-font-create": "0.0.5",
+    "svgicons2svgfont": "^7.0.2",
+    "webpack": "^1.14.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-util": "^3.0.8"
+  },
+  "scripts": {
+    "dev": "set NODE_ENV=development&& gulp dev",
+    "prod": "set NODE_ENV=production&& gulp prod",
+    "watch": "set NODE_ENV=development&& gulp"
+  },
+  "author": "Evgeny Alexseenko",
+  "license": "ISC"
+}

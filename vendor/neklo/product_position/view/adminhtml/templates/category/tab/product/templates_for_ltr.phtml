@@ -1,0 +1,86 @@
+<?php /** @var $block \Neklo\ProductPosition\Block\Adminhtml\Category\Direction */ ?>
+<script id="template-item" type="text/template">
+    <div class="nd-card">
+    <span btn="attached" class="nd-btn attached">
+      <i class="nd-icon nd-pin"></i>
+    </span>
+        <div class="nd-box-img">
+            <img src="<%= image %>" alt="">
+        </div>
+        <div class="nd-box-info">
+            <p class="nd-box-info__item name">
+                <%= name %>
+            </p>
+            <p class="nd-box-info__item sku">
+                SKU: <%= sku %>
+            </p>
+            <p class="nd-box-info__item price">
+                <%= price %>
+            </p>
+            <p class="nd-box-info__item status">
+                <strong><%= status %></strong>
+            </p>
+        </div>
+    </div>
+    <div class="nd-card-hover">
+    <span btn="attached" class="nd-btn attached">
+      <i class="nd-icon nd-pin"></i>
+    </span>
+        <div class="nd-box-img">
+            <img src="<%= image %>" alt="">
+        </div>
+        <div class="nd-box-info">
+            <p class="nd-box-info__item name">
+                <%= name %>
+            </p>
+            <p class="nd-box-info__item sku">
+                SKU: <%= sku %>
+            </p>
+            <p class="nd-box-info__item price">
+                <%= price %>
+            </p>
+        </div>
+        <div class="nd-row-buttons">
+      <span class="nd-btn action" btn="toBegin" title="<?php echo __('Move to beginning of the list')?>">
+         <i class="nd-icon nd-left-brackets"></i>
+      </span>
+            <span class="nd-btn action" btn="toLeft" title="<?php echo __('Switch with previous')?>">
+        <i class="nd-icon nd-left-arrow"></i>
+      </span>
+            <span class="nd-btn action" btn="toRight" title="<?php echo __('Switch with next')?>">
+        <i class="nd-icon nd-right-arrow"></i>
+      </span>
+            <span class="nd-btn action" btn="toEnd" title="<?php echo __('Move to end of the list')?>">
+        <i class="nd-icon nd-right-brackets"></i>
+      </span>
+            <span class="nd-btn action" btn="toPage" title="<?php echo __('Move to page number')?>">
+        <i class="nd-icon nd-page"></i>
+        <span class="to-page-frm">
+            <select class="input-text to-page-inp"></select>
+            <button class="to-page-btn" btn="goToPage"><?php echo __('Set')?></button>
+        </span>
+      </span>
+        </div>
+</script>
+
+<script type="text/template" id="template-separator">
+    <%= value %> Page
+    <hr>
+</script>
+<script type="text/template" id="template-paging-item">
+    <span class="nd-btn upload pager-item" data-page="<%= page %>"><%= page %></span>
+</script>
+<script type="text/template" id="template-paging">
+    <div class="admin__data-grid-header-row actions">
+        <div class="admin__data-grid-pager-wrap">
+            <span class="pager-holder"></span>
+        </div>
+        <div class="admin__filter-actions pager">
+            <?php echo __('Page') ?>
+            <button class="action-previous page-left" data-move="-1" title="<?php echo __('Previous page') ?>"><span><?php echo __('Go to Previous page') ?></span></button>
+            <select name="page" value="" class="admin__control-select page"></select>
+            <button class="action-next page-right" data-move="1" title="<?php echo __('Next page') ?>"><span><?php echo __('Go to Next page') ?></span></button>
+            <span class="total-pages"><?php echo __('of %s pages') ?></span> | <span class="total-items"><?php echo __('Total %d records found') ?></span>
+        </div>
+    </div>
+</script>

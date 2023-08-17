@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+  ~ NOTICE OF LICENSE
+  ~
+  ~ This source file is subject to the NekloEULA that is bundled with this package in the file LICENSE.txt.
+  ~
+  ~ It is also available through the world-wide-web at this URL: http://store.neklo.com/LICENSE.txt
+  ~
+  ~ Copyright (c)  Neklo (http://store.neklo.com/)
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <neklo_productposition>
+            <general>
+                <is_enabled>0</is_enabled>
+            </general>
+            <grid>
+                <display_mode>0</display_mode>
+                <row_count>3</row_count>
+                <column_count>4</column_count>
+            </grid>
+        </neklo_productposition>
+    </default>
+</config>

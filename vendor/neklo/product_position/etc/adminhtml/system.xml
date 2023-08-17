@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+  ~ NOTICE OF LICENSE
+  ~
+  ~ This source file is subject to the NekloEULA that is bundled with this package in the file LICENSE.txt.
+  ~
+  ~ It is also available through the world-wide-web at this URL: http://store.neklo.com/LICENSE.txt
+  ~
+  ~ Copyright (c)  Neklo (http://store.neklo.com/)
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="neklo_productposition" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Product Position</label>
+            <tab>neklo</tab>
+            <resource>Neklo_ProductPosition::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General</label>
+                <field id="is_enabled" translate="label comment" type="select" sortOrder="15" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Is Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="grid" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Grid Settings</label>
+                <field id="display_mode" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Load More Button</label>
+                    <comment>Select "Yes" value to display "Load More" button. Select "No" value to display page pagination</comment>
+                    <source_model>Neklo\ProductPosition\Model\Source\System\Config\Mode</source_model>
+                </field>
+                <field id="row_count" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Row Count</label>
+                </field>
+                <field id="column_count" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Column Count</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

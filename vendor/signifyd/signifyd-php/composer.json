@@ -1,0 +1,25 @@
+{
+  "name": "signifyd/signifyd-php",
+  "description": "Signifyd client API plugin for PHP",
+  "type": "library",
+  "version": "3.0.1",
+  "license": [
+    "MIT"
+  ],
+  "require": {
+    "php": ">=5.5.0",
+    "monolog/monolog": ">=1.16.0"
+  },
+  "require-dev": {
+    "php": ">=5.5.0",
+    "phpunit/phpunit": "^7"
+  },
+  "support": {
+    "email": "support@signifyd.com"
+  },
+  "autoload": {
+    "psr-4": {
+      "Signifyd\\": "lib/"
+    }
+  }
+}

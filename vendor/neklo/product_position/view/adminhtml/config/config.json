@@ -1,0 +1,41 @@
+{
+    "main": {
+        "dest": {
+            "js": "web/js",
+            "stylus": "web/css",
+            "fonts": "web/fonts",
+            "images": "web/images"
+        },
+        "src": {
+            "amd": {
+                "all": [],
+                "vendor": [],
+                "module": [
+                    "'prototype'",
+                    "'NEKLOvendor'"
+                ]
+            },
+            "js": {
+                "vendor": [
+                    "./src/js/lib/lodash.js",
+                    "./src/js/lib/h5utils.js"
+                ],
+                "module": [
+                    "./src/js/lib/event.simulate.js",
+                    "./src/js/NEKLO.Connector.m2.js",
+                    "./src/js/NEKLO.SimpleEventEmitter.js",
+                    "./src/js/NEKLO.ProductSorter.js",
+                    "./src/js/NEKLO.ProductPager.js",
+                    "./src/js/dnd_page_scroll.js"
+                ]
+            },
+            "stylus": "./src/stylus/*.styl",
+            "fonts": "./src/fonts/*",
+            "images": "./src/images/**/*.*"
+        },
+        "watch": {
+            "stylus": "./src/stylus/*.styl",
+            "js": "./src/js/**/**/*.js"
+        }
+    }
+}

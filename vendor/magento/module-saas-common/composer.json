@@ -1,0 +1,32 @@
+{
+    "name": "magento/module-saas-common",
+    "description": "Magento 2 SaaS Common module for shared saas export functionality",
+    "type": "magento2-module",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "version": "101.4.0",
+    "require": {
+        "php": "~7.3.0||~7.4.0||~8.1.0",
+        "magento/framework": ">=102.0.2",
+        "magento/module-data-exporter": "101.*",
+        "magento/services-connector": "*",
+        "magento/module-services-id": "*"
+    },
+    "suggest": {
+        "ext-zlib": "Allow gzip compression of HTTP requests"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Magento\\SaaSCommon\\": ""
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.5.0"
+    }
+}
+

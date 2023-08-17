@@ -1,0 +1,54 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .card-container {
+        margin-top: 20px;
+
+        .field {
+            div.error {
+                border-color: @checkout-field-validation__border-color;
+            }
+
+            .label {
+                display: block;
+                font-weight: 600;
+            }
+
+            .card-field {
+                border: 1px solid @color-gray76;
+                height: 32px;
+                max-width: 300px;
+                padding: 8px 15px;
+
+                &.card-field-short {
+                    width: 90px;
+                }
+            }
+
+            .field-wrapper {
+                display: inline-block;
+                padding-right: 20px;
+                position: relative;
+
+                .field-tooltip {
+                    cursor: pointer;
+                    position: absolute;
+                    right: 30px;
+                    top: 10px;
+                }
+            }
+        }
+    }
+    .checkout-index-index {
+        > .loading-mask {
+            z-index: 999;
+        }
+    }
+}

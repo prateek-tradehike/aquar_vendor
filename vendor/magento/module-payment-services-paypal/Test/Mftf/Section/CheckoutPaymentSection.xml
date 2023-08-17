@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ /**
+  * Copyright © Magento, Inc. All rights reserved.
+  * See COPYING.txt for license details.
+  */
+-->
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="urn:magento:mftf:Page/etc/SectionObject.xsd">
+    <section name="CheckoutPaymentSection">
+        <element name="MagentoPaymentsHostedFieldsRadio" type="radio" selector="input#payment_services_paypal_hosted_fields" timeout="30"/>
+        <element name="MagentoPaymentsHostedFieldsForm" type="block" selector="#hosted-fields-form"/>
+        <element name="MagentoPaymentsHostedFieldsCardNumberIframe" type="iframe" selector="braintree-hosted-field-number"/>
+        <element name="MagentoPaymentsHostedFieldsCardNumber" type="input" selector="input#credit-card-number"/>
+        <element name="MagentoPaymentsHostedFieldsCardNumberFieldElement" type="block" selector="[data-field-name='number']"/>
+        <element name="MagentoPaymentsHostedFieldsExpirationIframe" type="iframe" selector="braintree-hosted-field-expirationDate"/>
+        <element name="MagentoPaymentsHostedFieldsExpiration" type="input" selector="input#expiration"/>
+        <element name="MagentoPaymentsHostedFieldsExpirationFieldElement" type="block" selector="[data-field-name='expirationDate']"/>
+        <element name="MagentoPaymentsHostedFieldsCVVIframe" type="iframe" selector="braintree-hosted-field-cvv"/>
+        <element name="MagentoPaymentsHostedFieldsCVV" type="input" selector="input#cvv"/>
+        <element name="MagentoPaymentsHostedFieldsCVVFieldElement" type="block" selector="[data-field-name='cvv']"/>
+        <element name="MagentoPaymentsHostedFieldsCVVFieldTooltipToggle" type="block" selector="[data-field-name='cvv'] .toggle"/>
+        <element name="MagentoPaymentsHostedFieldsPlaceOrderButton" type="button" selector="div._active div.payment-method-content button.checkout"/>
+        <element name="MagentoPaymentsHostedFieldsPlaceOrderButtonDisabled" type="button" selector="div._active div.payment-method-content button.checkout:disabled"/>
+        <element name="MagentoPaymentsSmartButtonsRadio" type="radio" selector="input#payment_services_paypal_smart_buttons" timeout="30"/>
+        <element name="MagentoPaymentsHostedFieldsErrorElement" type="block" selector=".field-error span"/>
+        <element name="MagentoPaymentsHostedFieldsActiveCreditCardType" type="block" selector=".payment_services_paypal_hosted_fields .credit-card-types .item._active img[alt='{{type}}']" parameterized="true"/>
+    </section>
+</sections>

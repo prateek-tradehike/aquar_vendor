@@ -1,0 +1,92 @@
+<?php
+/*
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the NekloEULA that is bundled with this package in the file LICENSE.txt.
+ *
+ * It is also available through the world-wide-web at this URL: http://store.neklo.com/LICENSE.txt
+ *
+ * Copyright (c)  Neklo (http://store.neklo.com/)
+ */
+
+/** @var $block \Neklo\ProductPosition\Block\Adminhtml\Category\Edit */
+?>
+<script>
+    require([
+            'jquery',
+            'prototype',
+            'Neklo_ProductPosition/js/module-min'
+        ],
+        function(jQuery) {
+            var categoryProducts = $H(<?php echo $block->getSortedProductsPositionJson(); ?>);
+            var ajaxResponderHandler = new Object();
+
+            ajaxResponderHandler.onComplete = function (transport) {
+                if (
+                    transport.url.indexOf('catalog_category/edit') !== -1
+                    || transport.url.indexOf('catalog_category/grid') !== -1
+                ) {
+                    $$('input[name=position]').invoke('writeAttribute', 'readonly');
+                }
+                if (transport.url.indexOf('catalog_category/grid') !== -1) {
+                    restoreProductPosition();
+                }
+            };
+
+            Ajax.Responders.register(ajaxResponderHandler);
+
+            var updateProductPosition = window.updateProductPosition = function (productPosition) {
+                var categoryProductPositionInput = $('in_category_products');
+                if (categoryProductPositionInput) {
+                    var tmp1 = productPosition.size() != 0 ? categoryProducts : productPosition;
+                    var currentPositions = categoryProductPositionInput.getValue();
+                    tmp1.each(function (position) {
+                        var positionInput = getProductPositionInput(position.key);
+                        if (positionInput) {
+                            positionInput.val(position.value);
+                            positionInput.trigger('keyup');
+                            positionInput.attr('readonly', 'true');
+                        }
+                    });
+                    currentPositions = currentPositions ? JSON.parse(currentPositions) : '{}';
+                    var newPositions = productPosition.toQueryString().toQueryParams();
+                    var mergedPositions = Object.assign(currentPositions, newPositions);
+                    categoryProductPositionInput.setValue(JSON.stringify(mergedPositions));
+                }
+            };
+
+            var restoreProductPosition = window.restoreProductPosition = function () {
+                categoryProducts.each(function (position) {
+                    var positionInput = getProductPositionInput(position.key);
+                    if (positionInput) {
+                        positionInput.val(position.value);
+                    }
+                });
+            };
+
+            var getProductPositionInput = window.getProductPositionInput = function (productId) {
+                var productIdCheckbox = jQuery('#catalog_category_products_table input[type="checkbox"][value="' + productId + '"]').first();
+                if (!productIdCheckbox.length) {
+                    return null;
+                }
+
+                var positionInput = productIdCheckbox.parents('tr').find('input[name="position"]');
+                if (!positionInput.length) {
+                    return null;
+                }
+                return positionInput;
+            };
+
+            var updateProductAttached = window.updateProductAttached = function (categoryProductAttached) {
+                var attachedProductsInput = $('attached_category_products');
+                if (attachedProductsInput) {
+                    attachedProductsInput.setValue(JSON.stringify(categoryProductAttached));
+                }
+            };
+
+            jQuery(document).on('DOMContentLoaded', function() {
+                window.dnd_page_scroll();
+            });
+
+        });
+</script>

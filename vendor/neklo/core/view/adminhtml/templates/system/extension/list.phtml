@@ -1,0 +1,49 @@
+<?php
+
+
+/*
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the NekloEULA that is bundled with this package in the file LICENSE.txt.
+ *
+ * It is also available through the world-wide-web at this URL: http://store.neklo.com/LICENSE.txt
+ *
+ * Copyright (c)  Neklo (http://store.neklo.com/)
+ */
+
+use Neklo\Core\Block\System\Extension\ExtensionList;
+
+/** @var ExtensionList $block */
+
+$moduleConfigList = $block->getExtensionList();
+?>
+<ul id="neklo_core_extension_list">
+    <?php foreach ($moduleConfigList as $moduleCode => $moduleConfig): ?>
+        <?php if ($block->canShowExtension($moduleCode)): ?>
+            <li class="neklo-item">
+                <div class="ovh">
+                    <div class="neklo-row neklo-ext-name">
+                        <?= $block->escapeHtml($block->getExtensionName($moduleCode)); ?>
+                        <?= $block->escapeHtml($block->getExtensionVersion($moduleConfig)); ?>
+                    </div>
+                    <div class="neklo-img neklo-row">
+                        <img src="<?= $block->escapeUrl($block->getImageUrl($moduleCode)); ?>"
+                             alt="<?= $block->escapeQuote($block->getExtensionName($moduleCode)); ?>"/>
+                    </div>
+                    <?php if ($block->isExtensionVersionOutdated($moduleCode, $moduleConfig)): ?>
+                        <?= $block->escapeHtml(__(
+                            'New release %1 is available',
+                            $block->getLastExtensionVersion($moduleCode)
+                        )); ?>
+                        <img src="<?= $block->escapeUrl($block->getViewFileUrl('Neklo_Core::images/update.gif')); ?>"
+                             alt="<?= $block->escapeQuote($block->getLastExtensionVersion($moduleCode)); ?>">
+                    <?php else: ?>
+                        <?= $block->escapeHtml(__('Your version is up to date')); ?>
+                        <img src="<?= $block->escapeUrl($block->getViewFileUrl('Neklo_Core::images/ok.gif')); ?>"
+                             alt="<?= $block->escapeQuote($block->getExtensionVersion($moduleConfig)); ?>">
+                    <?php endif; ?>
+                </div>
+            </li>
+        <?php endif; ?>
+    <?php endforeach; ?>
+</ul>

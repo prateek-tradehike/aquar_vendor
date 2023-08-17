@@ -1,0 +1,33 @@
+{
+    "name": "magento/module-payment-services-saas-export",
+    "description": "Magento 2 Payment Services SaaS Export module exports necessary Payment Services data to Magento cloud services that rely on it",
+    "type": "magento2-module",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "config": {
+        "sort-packages": true
+    },
+    "version": "1.6.1",
+    "require": {
+        "php": "~7.3.0||~7.4.0||~8.1.0",
+        "magento/framework": ">=103.0.0 <=103.0.5-p2",
+        "magento/module-data-exporter": "^101.3.14",
+        "magento/module-sales-data-exporter": "1.6.*",
+        "magento/module-store-data-exporter": "1.6.*",
+        "magento/module-payment-services-base": "1.6.*",
+        "magento/services-connector": "^1.2.4",
+        "magento/module-services-id": "^3.1.0",
+        "magento/module-saas-common": "^101.4.0"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Magento\\PaymentServicesSaaSExport\\": ""
+        }
+    }
+}
+

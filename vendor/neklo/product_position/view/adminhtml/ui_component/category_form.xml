@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ NOTICE OF LICENSE
+  ~
+  ~ This source file is subject to the NekloEULA that is bundled with this package in the file LICENSE.txt.
+  ~
+  ~ It is also available through the world-wide-web at this URL: http://store.neklo.com/LICENSE.txt
+  ~
+  ~ Copyright (c)  Neklo (http://store.neklo.com/)
+  -->
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="neklo_productposition">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Visual Product Position</item>
+                <item name="additionalClasses" xsi:type="string">neklo-product-position-tab</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">41</item>
+            </item>
+        </argument>
+        <container name="neklo_productposition_container" >
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">161</item>
+                </item>
+            </argument>
+            <htmlContent name="html_content">
+                <argument name="block" xsi:type="object">Neklo\ProductPosition\Block\Adminhtml\Category\Position</argument>
+            </htmlContent>
+        </container>
+    </fieldset>
+</form>

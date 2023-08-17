@@ -1,0 +1,87 @@
+<?php
+/*
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the NekloEULA that is bundled with this package in the file LICENSE.txt.
+ *
+ * It is also available through the world-wide-web at this URL: http://store.neklo.com/LICENSE.txt
+ *
+ * Copyright (c)  Neklo (http://store.neklo.com/)
+ */
+
+ /** @var $block \Neklo\ProductPosition\Block\Adminhtml\Category\Position */
+$mode = $block->getShowMode();
+?>
+<div id="neklo-sorter" style="direction: ltr"></div>
+<input id="attached_category_products" type="hidden" name="attached_category_products" data-form-part="category_form" value=""/>
+
+<script type="text/javascript">
+    require([
+            'jquery',
+            'prototype',
+            'Neklo_ProductPosition/js/module-min'
+        ],
+        function(jQuery) {
+            window.categoryProductPosition = $H(<?php echo $block->getSortedProductsPositionJson(); ?>);
+            window.categoryProductAttached = $H(<?php echo $block->getAttachedProductsJson(); ?>);
+
+            var sorterOnItemsChangedCallback = window.sorterOnItemsChangedCallback = function (data) {
+                data.each(
+                    function (productPosition) {
+                        categoryProductPosition.set(productPosition.entity_id *1, productPosition.position * 1);
+                        categoryProductAttached.set(productPosition.entity_id *1, productPosition.attached === 'true' ? 1 : 0);
+                    }
+                );
+
+                updateProductPosition(categoryProductPosition);
+                updateProductAttached(categoryProductAttached);
+            };
+            setTimeout(
+                function () {
+                    updateProductPosition(categoryProductPosition);
+                    updateProductAttached(categoryProductAttached);
+                },
+                26
+            );
+
+            var httpOptions = {
+                url: '<?php echo $block->getUrl('neklo_productposition/ajax/page', ['id' => $block->getCategory()->getId(), 'store' => $block->getStoreId()]); ?>',
+                form_key: jQuery('[name="form_key"]').val()
+            };
+
+            var options = window.options = {
+                connector: new NEKLO.Connectors.Magento2Connector(httpOptions),
+                targetDOM: document.querySelector('#neklo-sorter'),
+                grid: {
+                    cols: <?php echo $block->getColumnCount(); ?>,
+                    rows: <?php echo $block->getRowCount(); ?>
+                },
+                uploadButton: {
+                    label: '<?php echo __('Load More'); ?>'
+                },
+                error: {
+                    message: '<?php echo __('Empty data. It is possible that the module is disabled in the system configuration.'); ?>'
+                },
+                item: {
+                    template: document.getElementById('template-item').innerHTML
+                },
+                separator: {
+                    template: document.getElementById('<?php echo $mode == \Neklo\ProductPosition\Model\Source\System\Config\Mode::MODE_PAGINATION_CODE ? 'template-paging' : 'template-separator' ?>').innerHTML
+                },
+                totalItems: <?php echo $block->getCollectionSize(); ?>,
+                categoryData : {
+                    position : categoryProductPosition,
+                    attached : categoryProductAttached
+                }
+            };
+            jQuery('[data-index="assign_products"] .fieldset-wrapper-title').click().click()
+//            require('uiRegistry').get('category_form.category_form.neklo_productposition').onOpen = function() {
+                var self = jQuery(this);
+//                jQuery('[data-index="assign_products"] .fieldset-wrapper-title').trigger('click');
+                var sorter = new NEKLO.Product<?php echo $block->getModeClass() ?>(options);
+                sorter.on(sorter.EVENTS.ON_ITEMS_CHANGED, sorterOnItemsChangedCallback);
+//            };
+
+
+        });
+</script>
